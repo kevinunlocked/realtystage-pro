@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String
+  passwordHash  String
+  role          String   @default("agent")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  assets        Asset[]
+  stagingProjects StagingProject[]
+  videoProjects VideoProject[]
+  posts         ScheduledPost[]
+  
+  @@index([email])
+}
+
+model Asset {
+  id            String   @id @default(cuid())
+  name          String
+  type          String   // image, video, document
+  url           String
+  thumbnailUrl  String?
+  size          Int
+  metadata      Json?
+  uploadedById  String
+  uploadedBy    User     @relation(fields: [uploadedById], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@index([uploadedById])
+  @@index([type])
+}
+
+model StagingProject {
+  id            String   @id @default(cuid())
+  originalImageId String
+  stagedImageUrl String?
+  style         String
+  parameters    Json
+  status        String   @default("pending")
+  createdById   String
+  createdBy     User     @relation(fields: [createdById], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  
+  @@index([createdById])
+}
+
+model VideoProject {
+  id            String   @id @default(cuid())
+  name          String
+  templateId    String
+  assetIds      String[]
+  outputUrl     String?
+  status        String   @default("draft")
+  settings      Json
+  createdById   String
+  createdBy     User     @relation(fields: [createdById], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  
+  @@index([createdById])
+}
+
+model ScheduledPost {
+  id            String   @id @default(cuid())
+  content       String
+  platforms     String[]
+  scheduledFor  DateTime
+  status        String   @default("draft")
+  assetIds      String[]
+  engagement    Json?
+  createdById   String
+  createdBy     User     @relation(fields: [createdById], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  
+  @@index([createdById])
+  @@index([scheduledFor])
+}
+
