@@ -8,9 +8,9 @@ import UploadProgress from '../../components/ui/UploadProgress';
 import NotificationCenter from '../../components/ui/NotificationCenter';
 
 // Import all components
-import MetricsOverview from './components/MetricsOverview';
+import MetricsOverview from './components/MetrixOverview';
 import PerformanceChart from './components/PerformanceChart';
-import PlatformAnalytics from './components/PlatformAnalytics';
+import PerformanceAnalytics from './components/PerformanceAnalytics';
 import ContentPerformance from './components/ContentPerformance';
 import AssetUtilization from './components/AssetUtilization';
 import ROICalculator from './components/ROICalculator';
@@ -78,7 +78,7 @@ const AnalyticsDashboard = () => {
       case 'performance':
         return <PerformanceChart />;
       case 'platforms':
-        return <PlatformAnalytics />;
+        return <PerformanceAnalytics />;
       case 'content':
         return <ContentPerformance />;
       case 'assets':
