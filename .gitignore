@@ -1,8 +1,48 @@
-.DS_Store
+# Dependencies
 node_modules
-.idea
 package-lock.json
+
+# Build output
 /build
+/dist
+/.vercel
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
 .vscode/
 .idea/
-vite.config.*s.*
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+coverage
+.nyc_output
+
+# Temporary files
+*.tmp
+*.temp
+.cache
