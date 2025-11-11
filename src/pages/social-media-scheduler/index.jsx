@@ -9,9 +9,9 @@ import UploadProgress from '../../components/ui/UploadProgress';
 import NotificationCenter from '../../components/ui/NotificationCenter';
 import ContentCalendar from './components/ContentCalendar';
 import ContentCreationPanel from './components/ContentCreationPanel';
-import ScheduledPostsList from './components/ScheduledPostsList';
+import ScheduledPostsLists from './components/ScheduledPostsLists';
 import AnalyticsOverview from './components/AnalyticsOverview';
-import BulkSchedulingTools from './components/BulkSchedulingTools';
+import BulkSchedulingTools from './components/BulkScheduling';
 import ApprovalWorkflow from './components/ApprovalWorkflow';
 
 const SocialMediaScheduler = () => {
@@ -272,7 +272,7 @@ const SocialMediaScheduler = () => {
               }
 
               {activeView === 'list' &&
-              <ScheduledPostsList
+              <ScheduledPostsLists
                 posts={scheduledPosts}
                 onEditPost={handleEditPost}
                 onDeletePost={handleDeletePost}
