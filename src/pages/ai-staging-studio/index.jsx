@@ -10,7 +10,7 @@ import NotificationCenter from '../../components/ui/NotificationCenter';
 
 // Import page components
 import ImageUploadZone from './components/ImageUploadZone';
-import StyleSelectionPanel from './components/StyleSelectionPanel';
+import StyleSelectionPanel from './components/StyleSelection';
 import ImagePreviewArea from './components/ImagePreviewArea';
 import GenerationControls from './components/GenerationControls';
 import ProcessingStatus from './components/ProcessingStatus';
